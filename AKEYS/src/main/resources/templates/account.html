@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Account - AKeys</title>
+    <link rel="stylesheet" href="css/stylesheets.css">
+    <!-- Add other stylesheets, scripts, or links as needed -->
+</head>
+<body>
+
+<div class="top-bar">
+    <p>FREE DOMESTIC SHIPPING FOR ORDERS OVER $150</p>
+</div>
+
+<div class="topnav">
+    <div class="logo">
+        <img id="AKEYS" src="images/AKEYS LOGO 2.png" alt="website logo">
+    </div>
+    <a href="home">Home</a>
+    <a href="keyboards">Keyboards</a>
+    <a href="keycaps">Keycaps</a>
+    <a href="switches">Switches</a>
+    <div class="nav-buttons">
+        <button class="search-button" onclick="openSearch()"><i class="fas fa-search"></i></button>
+        <button class="cart-button">
+            <a href="checkout"><i class="fas fa-cart-shopping"></i></a>
+        </button>
+    </div>
+</div>
+
+<section id="account-section">
+    <h2>Welcome to Your Account, <span th:text="${firstName}"></span>!</h2>
+    <!-- Add other account-related information and actions here -->
+</section>
+
+<footer>
+    <p>© 2023 AKEYS LLC. All rights reserved</p>
+    <div class="social-icons">
+        <h4>Follow Us!</h4>
+        <!-- Add your social media icons and links here -->
+    </div>
+    <button class="dark-mode-button" onclick="myFunction()">Dark Mode</button>
+</footer>
+
+<script src="/js/AKEYS-website.js"></script>
+<script src="js/checkout.js"></script>
+<!-- Add other scripts as needed -->
+</body>
+</html>
