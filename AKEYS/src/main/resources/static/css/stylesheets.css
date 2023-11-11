@@ -1,0 +1,434 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base styling for the whole page */
+body {
+  font-family: 'Bebas Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: black;
+  font-size: 25px;
+
+}
+
+/* Top navigation bar */
+.topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #ffffff;
+
+}
+
+/* Logo style */
+.logo {
+  width: 25%;
+}
+
+/* AKEYS logo image style */
+#AKEYS {
+  width: 60%;
+  height: auto;
+}
+
+/* Navigation links in the top bar */
+.topnav a {
+  color: black;
+  text-align: center;
+  padding: 0 40px;
+  text-decoration: none;
+  font-size: 25px;
+  border-bottom: 3px solid transparent;
+}
+
+.topnav a:hover {
+  border-bottom: 5px solid #00aaff;
+}
+
+.topnav a.active {
+  border-bottom: 5px solid #00aaff;
+}
+
+/* Container for navigation buttons */
+.nav-buttons {
+  display: flex;
+}
+
+/*  style for search, account, and cart buttons */
+.search-button, .account-button, .cart-button {
+  background-color: #ffffff;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  margin: 2px;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+
+}
+
+
+
+
+/* Style for the search icon */
+.search-button i {
+  font-size: 20px;
+}
+
+
+/* Style for the account icon */
+.account-button i {
+  font-size: 20px;
+
+}
+
+/* Style for the cart icon */
+.cart-button i {
+  font-size: 18px;
+}
+
+/* Home image */
+#homeImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Personal statement section */
+.personal-statement {
+  margin-top: 10%;
+  margin-bottom: 20%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 20px;
+  text-align: left;
+  font-size: 20pt;
+  font-family: 'Encode Sans Semi Condensed', sans-serif;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+}
+
+/* Footer section */
+footer {
+  background-color: #00aaff;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  justify-content: space-between;
+  font-family: 'Encode Sans Semi Condensed', sans-serif;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 14pt;
+
+}
+
+/* Section heading style */
+h3 {
+  text-align: center;
+  font-family: 'Encode Sans Semi Condensed', sans-serif;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Personal statement image style */
+#psimg {
+  float: left;
+  margin-right: 10%;
+  width: 40%;
+  height: auto;
+  position: relative;
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+.dark-mode #bottom-section {
+  background-color: black;
+  color: rgb(255, 255, 255);
+  font-size: 20pt;
+}
+
+.dark-mode .topnav {
+  background-color: #000000;
+}
+
+.dark-mode .nav-buttons i {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.dark-mode .topnav a {
+  color: rgb(255, 255, 255);
+}
+.dark-mode .price{
+  color: white;
+}
+
+
+/* Dark mode button style */
+.dark-mode-button {
+  background-color: #ffee00;
+  color: #000000;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Main content section */
+#bottom-section {
+  background-color: #e4e9eb;
+  padding: 10%;
+  margin: 0;
+}
+
+/* Social icons section */
+.social-icons {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Social icon style */
+.social-icons a {
+  font-size: 24px;
+  margin-right: 10px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Subheading style */
+h4 {
+  font-family: 'Encode Sans Semi Condensed', sans-serif;
+  font-family: 'Inter', sans-serif;
+}
+
+/* About Us Link */
+.about-us{
+  margin: 1%;
+}
+
+.footer-about-us{
+  font-size: 14pt;
+  font-family: 'Encode Sans Semi Condensed', sans-serif;
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* -----------------------------------  Search bar Overlay  -----------------------------------------------------------  */
+
+
+.openBtn {
+  background: #f1f1f1;
+  border: none;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.openBtn:hover {
+  background: #bbb;
+}
+
+/* The overlay effect with black background */
+.overlay {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+}
+
+/* The content */
+.overlay-content {
+  position: relative;
+  top: 46%;
+  width: 80%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+}
+
+/* Close button */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  cursor: pointer;
+  color: white;
+}
+
+.overlay .closebtn:hover {
+  color: #ccc;
+}
+
+/* Style the search field */
+.overlay input[type=text] {
+  padding: 15px;
+  font-size: 17px;
+  border: none;
+  float: left;
+  width: 80%;
+  background: white;
+}
+
+.overlay input[type=text]:hover {
+  background: #f1f1f1;
+}
+
+/* Style the submit button */
+.overlay button {
+  float: left;
+  width: 20%;
+  padding: 15px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.overlay button:hover {
+  background: #bbbbbb;
+}
+
+/* -----------------------------------  Search bar Overlay  -----------------------------------------------------------  */
+
+
+.top-bar {
+  background-color: #00aaff; /* Background color of the top bar */
+  color: white; /* Text color of the message */
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: 'Encode Sans Semi Condensed', sans-serif;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Style for the message */
+.top-bar p {
+  margin: 0;
+}
+
+/* ITEM CARD */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: 40px;
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+
+}
+
+.price {
+  color: rgb(0, 0, 0);
+  font-size: 25px;
+
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color:#F22A2A;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.welcome-message {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/*  filter   */
+.sort-dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.sort-button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.sort-button:hover {
+  background-color: #eee;
+}
+
+/* Style for the dropdown options */
+.sort-options {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index: 1;
+  min-width: 160px;
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.sort-options a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  color: #333;
+  font-size: 16px;
+}
+
+.sort-options a:hover {
+  background-color: #eee;
+}
+
+/* Show the dropdown options when the button is hovered */
+.sort-dropdown:hover .sort-options {
+  display: block;
+}
+
+/* layout for small screens */
+@media screen and (max-width: 600px) {
+  .topnav {
+    flex-direction: column;
+    text-align: center;
+  }
+}

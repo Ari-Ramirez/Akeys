@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - AKeys</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon-16x16.png">
+    <style>
+        .signup-form, .login-form {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Encode Sans Semi Condensed', sans-serif;
+            font-family: 'Inter', sans-serif;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #00aaff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Encode Sans Semi Condensed', sans-serif;
+            font-family: 'Inter', sans-serif;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #0088cc;
+        }
+
+        p.error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        p.success-message {
+            color: green;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        body {
+            background-image: url('images/switches-backround-singup.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .login-form{
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .login-link {
+            font-size: 12pt;
+            font-family: 'Encode Sans Semi Condensed', sans-serif;
+            font-family: 'Inter', sans-serif;
+            color: #01a2ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="login-form">
+    <a th:href="@{/home}">
+        <img id="AKEYS" src="images/AKEYS LOGO 2.png" alt="website logo">
+    </a>
+    <h2>Login</h2>
+    <form th:action="@{/login}" method="post">
+        <p>
+            <input type="email" id="loginEmail" name="username" placeholder="Email" required>
+        </p>
+        <p>
+            <input type="password" id="loginPassword" name="password" placeholder="Password" required>
+        </p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+    </form>
+    <p>Don't have an account? <a class="login-link" href="signup">Sign Up</a></p>
+</div>
+</body>
+</html>

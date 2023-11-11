@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboards - AKeys</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon-16x16.png">
+    <link rel="stylesheet" href="css/stylesheets.css">
+    <script src="js/AKEYS-website.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed&family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <script src="js/checkout.js" ></script>
+</head>
+
+<body>
+<div class="top-bar">
+    <p>FREE DOMESTIC SHIPPING FOR ORDERS OVER $150</p>
+</div>
+
+
+<div class="topnav">
+    <div class="logo">
+        <img id="AKEYS" src="images/AKEYS LOGO 2.png" alt="website logo">
+    </div>
+    <a href="home">Home</a>
+    <a class="active" href="keyboards">Keyboards</a>
+    <a href="keycaps">Keycaps</a>
+    <a href="switches">Switches</a>
+    <div class="nav-buttons">
+        <button class="search-button" onclick="openSearch()"><i class="fas fa-search"></i></button>
+
+        <div id="myOverlay" class="overlay">
+            <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+            <div class="overlay-content">
+                <form action="/action_page.php">
+                    <input type="text" id="searchInput" oninput="filterProductsByName()">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <button class="account-button">
+            <a href="signup" target="_blank"><i class="far fa-user"></i></a>
+        </button>
+
+        <button class="cart-button">
+            <a href="checkout"><i class="fas fa-cart-shopping"></i></a>
+        </button>
+        </a>
+    </div>
+</div>
+
+
+
+
+
+
+<!--   body      -->
+<section id="bottom-section">
+
+
+
+    <!-- filter buttons -->
+    <div class="sort-dropdown">
+        <button class="sort-button">Sort by</button>
+        <div class="sort-options">
+            <a href="#" onclick="sortByPriceHighToLow(); return false;">Price High to Low</a>
+            <a href="#" onclick="sortByPriceLowToHigh(); return false;">Price Low to High</a>
+        </div>
+    </div>
+
+
+    <div class="card-container"></div>
+</section>
+<footer>
+    <p>© 2023 AKEYS LLC. All rights reserved</p>
+
+
+    <div class="social-icons">
+        <h4>Follow Us !</h4>
+
+        <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/your_instagram_profile/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    <button class="dark-mode-button" onclick="myFunction()">Dark Mode</button>
+</footer>
+<script>
+
+
+    // Function to toggle dark mode
+function toggleDarkMode() {
+var element = document.body;
+element.classList.toggle("dark-mode");
+saveDarkModeSetting(element.classList.contains("dark-mode"));
+}
+
+// Function to save dark mode setting to local storage
+function saveDarkModeSetting(isDarkMode) {
+localStorage.setItem("darkMode", isDarkMode);
+}
+
+// Function to load dark mode setting from local storage
+function loadDarkModeSetting() {
+var isDarkMode = localStorage.getItem("darkMode") === "true";
+if (isDarkMode) {
+document.body.classList.add("dark-mode");
+}
+}
+
+// Call the function to load dark mode setting when the page loads
+loadDarkModeSetting();
+
+// Ensure that the dark mode button exists before adding an event listener
+document.addEventListener("DOMContentLoaded", function() {
+var darkModeButton = document.querySelector(".dark-mode-button");
+if (darkModeButton) {
+darkModeButton.addEventListener("click", toggleDarkMode);
+}
+});
+
+  // Open the full-screen search box
+  function openSearch() {
+    document.getElementById("myOverlay").style.display = "block";
+  }
+
+  // Close the full-screen search box
+  function closeSearch() {
+    document.getElementById("myOverlay").style.display = "none";
+  }
+
+  // filter
+   // Sample product data
+
+   const keyboardProducts = [
+    { name: 'N65-Awaken', price: 240,},
+    { name: 'N65 TFUE 1', price: 185 },
+    { name: 'N65 TFUE 2', price: 185 },
+    { name: '87 - DARKSHAKE', price: 225 },
+    { name: 'N65 - MICTLAN', price: 140 },
+    { name: 'MONOKEI STANDARD', price: 174 },
+    { name: 'N65 - ALUMINUM', price: 165 },
+    { name: 'N87 - ALUMINUM', price: 225 },
+
+];
+
+// Function to display products
+function displayProducts(products) {
+    const productContainer = document.querySelector('.card-container');
+    productContainer.innerHTML = '';
+
+    products.forEach(product => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const img = document.createElement('img');
+        img.src = 'images/' + product.name + '.png';
+        img.alt = product.name;
+
+        const h1 = document.createElement('h1');
+        h1.textContent = product.name;
+
+        const price = document.createElement('p');
+        price.classList.add('price');
+        price.textContent = '$' + product.price;
+
+        const addButton = document.createElement('button');
+        addButton.textContent = 'Add to Cart';
+
+         // Add an event listener to the button to call the addToCart function
+    addButton.addEventListener('click', () => {
+        addToCart(product.name, product.price);
+    });
+
+        card.appendChild(img);
+        card.appendChild(h1);
+        card.appendChild(price);
+        card.appendChild(addButton);
+
+        productContainer.appendChild(card);
+    });
+}
+
+// Sort products by price (Low to High)
+function sortByPriceLowToHigh() {
+    const sortedProducts = [...keyboardProducts].sort((a, b) => a.price - b.price);
+    displayProducts(sortedProducts);
+}
+
+// Sort products by price (High to Low)
+function sortByPriceHighToLow() {
+    const sortedProducts = [...keyboardProducts].sort((a, b) => b.price - a.price);
+    displayProducts(sortedProducts);
+}
+
+// Filter products by name
+function filterProductsByName(searchTerm) {
+    const filteredProducts = keyboardProducts.filter(product => {
+        return product.name.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    displayProducts(filteredProducts);
+}
+
+// Initial display of all keyboard products
+displayProducts(keyboardProducts);
+
+
+//
+
+</script>
+
+</body>
+</html>

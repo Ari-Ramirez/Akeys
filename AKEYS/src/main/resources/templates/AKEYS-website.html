@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKeys</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon-16x16.png">
+    <link rel="stylesheet" href="css/stylesheets.css">
+    <script src="/js/AKEYS-website.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed&family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/checkout.js" ></script>
+</head>
+<body>
+
+
+
+
+<div class="top-bar">
+    <p>FREE DOMESTIC SHIPPING FOR ORDERS OVER $150</p>
+</div>
+
+<div class="topnav">
+
+    <!-- Display welcome message -->
+    <div th:if="${firstName}" class="welcome-message">
+        <p th:text="'Hello, ' + ${firstName} + '!'"></p>
+    </div>
+
+
+    <div class="logo">
+        <img id="AKEYS" src="images/AKEYS LOGO 2.png" alt="website logo">
+    </div>
+    <a class="active" href="home">Home</a>
+    <a href="keyboards">Keyboards</a>
+    <a href="keycaps">Keycaps</a>
+    <a href="switches">Switches</a>
+    <div class="nav-buttons">
+        <button class="search-button" onclick="openSearch()"><i class="fas fa-search"></i></button>
+
+        <div id="myOverlay" class="overlay">
+            <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+            <div class="overlay-content">
+                <form action="/action_page.php">
+                    <input type="text" id="searchInput" oninput="filterProductsByName()">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <button class="account-button">
+            <a href="signup" target="_blank"><i class="far fa-user"></i></a>
+        </button>
+
+        <button class="cart-button">
+            <a href="checkout"><i class="fas fa-cart-shopping"></i></a>
+        </button>
+        </a>
+    </div>
+</div>
+
+<img id="homeImg" src="images/home page img.png" alt="home page img">
+
+<section id="bottom-section">
+
+
+    <div class="card-container">
+        <!-- ALL PRODCUT CARDS GO HERE   -->
+
+        <div class="card">
+            <img src="images/GMK HINEYBEIGE.png" alt="1st keyboard img"  style="width:100%" >
+            <h1>GMK HINEYBEIGE</h1>
+            <p class="price">$145</p>
+            <p><button onclick="addToCart('GMK HINEYBEIGE', 145)">Add to Cart</button></p>
+        </div>
+
+        <div class="card">
+            <img src="images/CYL TAKO.png" alt="2nd keyboard img"  style="width:100%" >
+            <h1>CYL TAKO</h1>
+            <p class="price">$150</p>
+            <p><button onclick="addToCart('CYL TAKO', 150)">Add to Cart</button></p>
+        </div>
+
+        <div class="card">
+            <img src="images/CYL ART CR.png" alt="3rd keyboard img"  style="width:100%" >
+            <h1>CYL ART</h1>
+            <p class="price">$150</p>
+            <p><button>Add to Cart</button></p>
+        </div>
+
+        <div class="card">
+            <img src="images/CYL ART RB.png" alt="4th keyboard img"  style="width:100%" >
+            <h1>CYL ART</h1>
+            <p class="price">$140</p>
+            <p><button>Add to Cart</button></p>
+        </div>
+    </div>
+
+
+
+    <div class="card-container">
+
+        <div class="card">
+            <img src="images/1st-stabalizer-img1.png" alt="1st stabalizer img"  style="width:100%" >
+            <h1>QMX STABILIZERS</h1>
+            <p class="price">$22</p>
+            <p><button>Add to Cart</button></p>
+        </div>
+
+
+        <div class="card">
+            <img src="images/CREAM CLICKIE.png" alt="1st switchimg"  style="width:100%" >
+            <h1>CREAM CLICKIE</h1>
+            <p class="price">$32</p>
+            <p><button>Add to Cart</button></p>
+        </div>
+
+        <div class="card">
+            <img src="images/NK_ CREAM.png" alt="2nd switch img "  style="width:100%" >
+            <h1>NK_ CREAM </h1>
+            <p class="price">$32</p>
+            <p><button>Add to Cart</button></p>
+        </div>
+
+        <div class="card">
+            <img src="images/NK_ CREAM BLU.png" alt="3rd switch img "  style="width:100%" >
+            <h1>NK_ CREAM BLU</h1>
+            <p class="price">$32</p>
+            <p><button>Add to Cart</button></p>
+        </div>
+
+
+
+    </div>
+
+
+</section>
+<footer>
+    <p>© 2023 AKEYS LLC. All rights reserved</p>
+
+    <div class="social-icons">
+        <h4>Follow Us !</h4>
+
+        <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/your_instagram_profile/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    <button class="dark-mode-button" onclick="myFunction()">Dark Mode</button>
+</footer>
+<script>
+    // Function to toggle dark mode
+function toggleDarkMode() {
+var element = document.body;
+element.classList.toggle("dark-mode");
+saveDarkModeSetting(element.classList.contains("dark-mode"));
+}
+
+// Function to save dark mode setting to local storage
+function saveDarkModeSetting(isDarkMode) {
+localStorage.setItem("darkMode", isDarkMode);
+}
+
+// Function to load dark mode setting from local storage
+function loadDarkModeSetting() {
+var isDarkMode = localStorage.getItem("darkMode") === "true";
+if (isDarkMode) {
+document.body.classList.add("dark-mode");
+}
+}
+
+// Call the function to load dark mode setting when the page loads
+loadDarkModeSetting();
+
+// Ensure that the dark mode button exists before adding an event listener
+document.addEventListener("DOMContentLoaded", function() {
+var darkModeButton = document.querySelector(".dark-mode-button");
+if (darkModeButton) {
+darkModeButton.addEventListener("click", toggleDarkMode);
+}
+});
+</script>
+</body>
+</html>
