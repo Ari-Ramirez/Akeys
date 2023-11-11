@@ -41,4 +41,10 @@ public class WebsiteController {
     }
 
 
+
+    @GetMapping("/account")
+    public String account(){
+
+        return "account";
+    }
 }

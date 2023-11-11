@@ -3,9 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Account - AKeys</title>
+    <title>Account</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon-16x16.png">
     <link rel="stylesheet" href="css/stylesheets.css">
-    <!-- Add other stylesheets, scripts, or links as needed -->
+    <script src="/js/AKEYS-website.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed&family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/checkout.js" ></script>
+    <style>
+        footer{
+        position: fixed;
+        bottom: 0;
+        width: 100%;}
+    </style>
 </head>
 <body>
 
@@ -26,25 +41,124 @@
         <button class="cart-button">
             <a href="checkout"><i class="fas fa-cart-shopping"></i></a>
         </button>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
     </div>
 </div>
 
 <section id="account-section">
     <h2>Welcome to Your Account, <span th:text="${firstName}"></span>!</h2>
+
+    <!-- Orders Table -->
+    <h3>Your Orders</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Order Number</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Use Thymeleaf iteration to populate table rows -->
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.id}"></td>
+            <td th:text="${order.orderNumber}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Products Table -->
+    <h3>Your Products</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Use Thymeleaf iteration to populate table rows -->
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Returns Table -->
+    <h3>Your Returns</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Return ID</th>
+            <th>Return Number</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Use Thymeleaf iteration to populate table rows -->
+        <tr th:each="return : ${returns}">
+            <td th:text="${return.id}"></td>
+            <td th:text="${return.returnNumber}"></td>
+        </tr>
+        </tbody>
+    </table>
+
     <!-- Add other account-related information and actions here -->
 </section>
 
 <footer>
     <p>© 2023 AKEYS LLC. All rights reserved</p>
     <div class="social-icons">
-        <h4>Follow Us!</h4>
-        <!-- Add your social media icons and links here -->
+        <h4>Follow Us !</h4>
+
+        <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/your_instagram_profile/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i>
+        </a>
     </div>
     <button class="dark-mode-button" onclick="myFunction()">Dark Mode</button>
 </footer>
 
 <script src="/js/AKEYS-website.js"></script>
 <script src="js/checkout.js"></script>
-<!-- Add other scripts as needed -->
+<script>
+    // Function to toggle dark mode
+function toggleDarkMode() {
+var element = document.body;
+element.classList.toggle("dark-mode");
+saveDarkModeSetting(element.classList.contains("dark-mode"));
+}
+
+// Function to save dark mode setting to local storage
+function saveDarkModeSetting(isDarkMode) {
+localStorage.setItem("darkMode", isDarkMode);
+}
+
+// Function to load dark mode setting from local storage
+function loadDarkModeSetting() {
+var isDarkMode = localStorage.getItem("darkMode") === "true";
+if (isDarkMode) {
+document.body.classList.add("dark-mode");
+}
+}
+
+// Call the function to load dark mode setting when the page loads
+loadDarkModeSetting();
+
+// Ensure that the dark mode button exists before adding an event listener
+document.addEventListener("DOMContentLoaded", function() {
+var darkModeButton = document.querySelector(".dark-mode-button");
+if (darkModeButton) {
+darkModeButton.addEventListener("click", toggleDarkMode);
+}
+});
+</script>
 </body>
 </html>
