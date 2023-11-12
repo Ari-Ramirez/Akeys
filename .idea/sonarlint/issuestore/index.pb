@@ -37,3 +37,13 @@ v
 Fsrc/main/java/org/ari_ramirez_AKEYS/AKEYS/Service/ProductsService.java,c\c\ccd9c50a7b9e6c068a0aae2c9975fb52d7638a77
 z
 Jsrc/main/java/org/ari_ramirez_AKEYS/AKEYS/Service/ProductsServiceImpl.java,2\a\2afa4cf4e1d74f0917d552bc9cb8e9ed27fd5964
+u
+Esrc/main/java/org/ari_ramirez_AKEYS/AKEYS/Service/ReturnsService.java,4\e\4e80cdb8c7b49bc5599603fea687d4bf4eb02912
+y
+Isrc/main/java/org/ari_ramirez_AKEYS/AKEYS/Service/ReturnsServiceImpl.java,f\5\f50d4c5c68bd3b4f91cc527ff6f86400c2932b06
+j
+:src/main/java/org/ari_ramirez_AKEYS/AKEYS/DTO/UserDTO.java,5\7\5768cd178bf6d6ccfca695e4e1eca3b4eef4f1d4
+n
+>src/main/java/org/ari_ramirez_AKEYS/AKEYS/DTO/ProductsDTO.java,f\b\fb8915cd94123de9cb6f0bd13c20cefcee61c437
+m
+=src/main/java/org/ari_ramirez_AKEYS/AKEYS/DTO/ReturnsDTO.java,8\9\89c7cc15160769ceeeefd57e5c192847dcfb4d3d

@@ -22,6 +22,4 @@ public class OrdersServiceImpl implements OrdersService {
     public List<Orders> getOrdersByUser(User user) {
         return ordersRepository.findByUser(user);
     }
-
-    // Add other methods and business logic as needed
 }

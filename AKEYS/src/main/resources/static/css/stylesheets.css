@@ -59,7 +59,7 @@ body {
 }
 
 /*  style for search, account, and cart buttons */
-.search-button, .account-button, .cart-button {
+.search-button, .account-button, .cart-button , .logout-button {
   background-color: #ffffff;
   color: black;
   border: none;

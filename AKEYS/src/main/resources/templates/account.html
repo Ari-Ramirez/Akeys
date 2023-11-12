@@ -20,6 +20,30 @@
         position: fixed;
         bottom: 0;
         width: 100%;}
+
+
+         /* Style for the logout button */
+    .logout-button {
+        background-color: #ffee00;
+        color: #000000;
+        border: none;
+        padding: 10px 20px;
+        margin: 2px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    /* Hover effect */
+    .logout-button:hover {
+        background-color: #ddd;
+    }
+
+    /* Active (clicked) state */
+    .logout-button:active {
+        background-color: #ccc;
+    }
     </style>
 </head>
 <body>
@@ -36,6 +60,7 @@
     <a href="keyboards">Keyboards</a>
     <a href="keycaps">Keycaps</a>
     <a href="switches">Switches</a>
+    <a class="active" href="account">Account</a>
     <div class="nav-buttons">
         <button class="search-button" onclick="openSearch()"><i class="fas fa-search"></i></button>
         <button class="cart-button">
