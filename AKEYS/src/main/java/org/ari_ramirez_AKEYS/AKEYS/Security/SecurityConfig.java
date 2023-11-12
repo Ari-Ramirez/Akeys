@@ -38,7 +38,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/", "/css/*", "/js/*", "/img/*",
+                                .requestMatchers("/", "/css/*", "/js/*", "images/*",
                                         "/form", "/sign-up-process", "/signup",
                                         "/login", "/keyboards", "/keycaps", "/switches", "/checkout", "/AKEYS-website", "/home")
                                 .permitAll()
@@ -53,9 +53,9 @@ public class SecurityConfig {
                 )
                 .logout(logout ->
                         logout
+                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                                 .invalidateHttpSession(true)
                                 .clearAuthentication(true)
-                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                                 .permitAll()
                 );
 

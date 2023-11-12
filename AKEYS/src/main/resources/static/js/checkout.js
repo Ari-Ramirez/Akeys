@@ -122,7 +122,6 @@ function checkout() {
     var selectedProducts = getSelectedProducts();
 
     // Make an AJAX request to the server to create an order
-    // You can use a library like Axios or the native fetch API
     // Replace '/checkout' with the actual endpoint for checkout
     fetch('/checkout', {
         method: 'POST',
@@ -141,6 +140,7 @@ function checkout() {
         // Handle errors, e.g., show an error message to the user
     });
 }
+
 
 // Call displayCart when the page loads
 document.addEventListener('DOMContentLoaded', displayCart);
