@@ -56,14 +56,12 @@ function displayCart() {
             const removeButton = document.createElement('button');
             removeButton.textContent = ' - ';
             removeButton.addEventListener('click', () => {
-
                 removeItemFromCart(item);
             });
 
             const addQuantityButton = document.createElement('button');
             addQuantityButton.textContent = '+';
             addQuantityButton.addEventListener('click', () => {
-
                 incrementItemQuantity(item);
             });
 
@@ -72,7 +70,6 @@ function displayCart() {
             cartItemElement.appendChild(addQuantityButton);
             cartItemsElement.appendChild(cartItemElement);
         });
-
 
         updateTotal();
     }
@@ -109,4 +106,41 @@ function updateTotal() {
     }
 }
 
-displayCart();
+// Function to get the selected products
+function getSelectedProducts() {
+    const cart = loadCart();
+    return cart.map(item => ({
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+    }));
+}
+
+// Function to handle the checkout process
+function checkout() {
+    // Get the selected products
+    var selectedProducts = getSelectedProducts();
+
+    // Make an AJAX request to the server to create an order
+    // You can use a library like Axios or the native fetch API
+    // Replace '/checkout' with the actual endpoint for checkout
+    fetch('/checkout', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ products: selectedProducts }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Handle the response, e.g., redirect to the account page
+        window.location.href = '/account';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle errors, e.g., show an error message to the user
+    });
+}
+
+// Call displayCart when the page loads
+document.addEventListener('DOMContentLoaded', displayCart);

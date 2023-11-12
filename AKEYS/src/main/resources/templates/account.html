@@ -16,34 +16,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="js/checkout.js" ></script>
     <style>
-        footer{
-        position: fixed;
-        bottom: 0;
-        width: 100%;}
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
 
+        /* Style for the logout button */
+        .logout-button {
+            background-color: #ffee00;
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            margin: 2px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
 
-         /* Style for the logout button */
-    .logout-button {
-        background-color: #ffee00;
-        color: #000000;
-        border: none;
-        padding: 10px 20px;
-        margin: 2px;
-        cursor: pointer;
-        font-size: 16px;
-        border-radius: 5px;
-        font-weight: bold;
-    }
+        /* Hover effect */
+        .logout-button:hover {
+            background-color: #ddd;
+        }
 
-    /* Hover effect */
-    .logout-button:hover {
-        background-color: #ddd;
-    }
-
-    /* Active (clicked) state */
-    .logout-button:active {
-        background-color: #ccc;
-    }
+        /* Active (clicked) state */
+        .logout-button:active {
+            background-color: #ccc;
+        }
     </style>
 </head>
 <body>
@@ -75,14 +75,16 @@
 <section id="account-section">
     <h2>Welcome to Your Account, <span th:text="${firstName}"></span>!</h2>
 
-    <!-- Orders Table -->
-    <h3>Your Orders</h3>
+    <!-- Orders and Products Table -->
+    <h3>Your Orders and Products</h3>
     <table>
         <thead>
         <tr>
             <th>Order ID</th>
             <th>Order Number</th>
-
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Product Price</th>
         </tr>
         </thead>
         <tbody>
@@ -90,50 +92,26 @@
         <tr th:each="order : ${orders}">
             <td th:text="${order.id}"></td>
             <td th:text="${order.orderNumber}"></td>
+            <!-- Add columns for product information -->
+            <td>
+                <!-- Use Thymeleaf iteration to populate product information -->
+                <span th:each="orderItem : ${order.orderItems}">
+                    <span th:text="${orderItem.product.id}"></span><br>
+                </span>
+            </td>
+            <td>
+                <span th:each="orderItem : ${order.orderItems}">
+                    <span th:text="${orderItem.product.name}"></span><br>
+                </span>
+            </td>
+            <td>
+                <span th:each="orderItem : ${order.orderItems}">
+                    <span th:text="${orderItem.product.price}"></span><br>
+                </span>
+            </td>
         </tr>
         </tbody>
     </table>
-
-    <!-- Products Table -->
-    <h3>Your Products</h3>
-    <table>
-        <thead>
-        <tr>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Use Thymeleaf iteration to populate table rows -->
-        <tr th:each="product : ${products}">
-            <td th:text="${product.id}"></td>
-            <td th:text="${product.name}"></td>
-            <td th:text="${product.price}"></td>
-        </tr>
-        </tbody>
-    </table>
-
-    <!-- Returns Table -->
-    <h3>Your Returns</h3>
-    <table>
-        <thead>
-        <tr>
-            <th>Return ID</th>
-            <th>Return Number</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Use Thymeleaf iteration to populate table rows -->
-        <tr th:each="return : ${returns}">
-            <td th:text="${return.id}"></td>
-            <td th:text="${return.returnNumber}"></td>
-        </tr>
-        </tbody>
-    </table>
-
-    <!-- Add other account-related information and actions here -->
 </section>
 
 <footer>
@@ -150,9 +128,6 @@
     </div>
     <button class="dark-mode-button" onclick="myFunction()">Dark Mode</button>
 </footer>
-
-<script src="/js/AKEYS-website.js"></script>
-<script src="js/checkout.js"></script>
 <script>
     // Function to toggle dark mode
 function toggleDarkMode() {
