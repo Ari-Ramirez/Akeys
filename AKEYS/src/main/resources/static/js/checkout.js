@@ -56,14 +56,18 @@ function displayCart() {
             const removeButton = document.createElement('button');
             removeButton.textContent = ' - ';
             removeButton.addEventListener('click', () => {
-                removeItemFromCart(item);
+                decrementItemQuantity(item);
             });
 
+            removeButton.classList.add('remove-button');
+
             const addQuantityButton = document.createElement('button');
-            addQuantityButton.textContent = '+';
+            addQuantityButton.textContent = ' + ';
             addQuantityButton.addEventListener('click', () => {
                 incrementItemQuantity(item);
             });
+
+            addQuantityButton.classList.add('add-quantity-button');
 
             cartItemElement.appendChild(cartItemName);
             cartItemElement.appendChild(removeButton);
@@ -75,19 +79,37 @@ function displayCart() {
     }
 }
 
-// Function to remove an item from the cart
-function removeItemFromCart(item) {
+// Function to decrement the quantity of an item in the cart
+function decrementItemQuantity(item) {
     const cart = loadCart();
     const itemIndex = cart.findIndex(cartItem => cartItem.name === item.name);
 
     if (itemIndex !== -1) {
-        cart.splice(itemIndex, 1);
-        // Update the cart in local storage
-        localStorage.setItem('cart', JSON.stringify(cart));
-        // Redisplay the cart with the updated data
-        displayCart();
-        // Calculate total price and update
-        updateTotal();
+        // Decrement the quantity for the item by 1
+        if (cart[itemIndex].quantity > 1) {
+            cart[itemIndex].quantity -= 1;
+
+            // Update the cart in local storage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Redisplay the cart with the updated data
+            displayCart();
+
+            // Calculate total price and update
+            updateTotal();
+        } else {
+            // If quantity is 1, remove the item from the cart
+            cart.splice(itemIndex, 1);
+
+            // Update the cart in local storage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Redisplay the cart with the updated data
+            displayCart();
+
+            // Calculate total price and update
+            updateTotal();
+        }
     }
 }
 
@@ -118,6 +140,13 @@ function getSelectedProducts() {
 
 // Function to handle the checkout process
 function checkout() {
+    // Check if the user is logged in
+    if (!isLoggedIn()) {
+        // Redirect to the account page for unauthenticated users
+        window.location.href = '/account';
+        return;
+    }
+
     // Get the selected products
     var selectedProducts = getSelectedProducts();
 
@@ -132,15 +161,43 @@ function checkout() {
     })
     .then(response => response.json())
     .then(data => {
-        // Handle the response, e.g., redirect to the account page
-        window.location.href = '/account';
+        // Check if the response indicates a successful checkout
+        if (data.success) {
+            // Redirect to the account page for authenticated users
+            window.location.href = '/account';
+        } else {
+            // Display an error message on the page
+            displayErrorMessage(data.message || 'Error processing checkout. Please try again.');
+        }
     })
     .catch(error => {
         console.error('Error:', error);
         // Handle errors, e.g., show an error message to the user
+        displayErrorMessage('Error processing checkout. Please try again.');
     });
 }
 
+// Function to check if the user is logged in
+function isLoggedIn() {
+    // Implement your logic to check if the user is logged in
+    // For example, you can check the presence of a user session or token
+    // Replace this with your actual authentication logic
+    return false; // Return true if the user is logged in
+}
+
+// Function to display the login message on the page
+function displayLoginMessage(message) {
+    var loginMessageElement = document.getElementById('loginMessage');
+    if (loginMessageElement) {
+        loginMessageElement.textContent = message;
+    }
+}
+
+// Function to display an error message on the page
+function displayErrorMessage(message) {
+    // Adjust this part based on how you want to display error messages
+    alert(message);
+}
 
 // Call displayCart when the page loads
 document.addEventListener('DOMContentLoaded', displayCart);

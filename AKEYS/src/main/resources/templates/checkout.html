@@ -22,9 +22,20 @@
             bottom: 0;
             width: 100%;
         }
+
+  #checkout-button {
+            background-color: #00aaff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 2px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
     </style>
-    <script src="js/AKEYS-website.js"></script>
-    <script src="js/checkout.js" ></script>
+
 </head>
 <body>
 <div class="top-bar">
@@ -75,6 +86,8 @@
 
         <!-- Checkout Button -->
         <button id="checkout-button" onclick="checkout()">Checkout</button>
+
+        <p id="loginMessage" style="color: red;"></p>
     </section>
 
 </section>
@@ -93,7 +106,8 @@
     </div>
     <button class="dark-mode-button" onclick="myFunction()">Dark Mode</button>
 </footer>
-
+<script src="js/AKEYS-website.js"></script>
+<script src="js/checkout.js" ></script>
 
 <script>
     // Function to toggle dark mode

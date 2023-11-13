@@ -20,6 +20,8 @@ public class Products {
 
     private double price;
 
+    private int quantity;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
