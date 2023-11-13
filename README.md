@@ -12,6 +12,7 @@ Usage
 - Proceed to checkout and place an order.
 
 Technologies Used
+
 Frontend: JavaScript, HTML, CSS
 
 Backend: Spring Boot (Java)
