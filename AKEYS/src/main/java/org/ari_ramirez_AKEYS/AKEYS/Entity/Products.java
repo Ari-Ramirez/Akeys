@@ -25,4 +25,10 @@ public class Products {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+
+    public Products(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
 }
