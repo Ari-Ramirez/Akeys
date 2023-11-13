@@ -13,6 +13,7 @@ Usage
 
 Technologies Used
 Frontend: JavaScript, HTML, CSS
+
 Backend: Spring Boot (Java)
 Database: MySQL
 
