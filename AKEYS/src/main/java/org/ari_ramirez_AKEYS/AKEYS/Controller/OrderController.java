@@ -38,7 +38,6 @@ public class OrderController {
 
     @PostMapping("/checkout")
     public ResponseEntity<Map<String, Object>> checkout(@RequestBody List<Products> selectedProducts) {
-        // Assuming you have a method to get the currently logged-in user
         User currentUser = getCurrentUser();
 
         // Create a new order for the current user
@@ -51,7 +50,7 @@ public class OrderController {
             OrderItem orderItem = new OrderItem();
             orderItem.setOrder(order);
             orderItem.setProduct(product);
-            orderItem.setQuantity(product.getQuantity()); // Assuming quantity is 1, adjust as needed
+            orderItem.setQuantity(product.getQuantity());
             orderItemRepository.save(orderItem);
         }
 
