@@ -1,7 +1,22 @@
 # Akeys
 Capstone Project 1 AKEYS website
 
+Introduction
 
+AKEYS is a platform designed for users to explore a variety of computer keyboards, add them to their cart, and make purchases seamlessly. It provides a user-friendly interface for a smooth shopping experience.
+
+Usage
+- Browse the available keyboards, keycaps, switches.
+- Add items to the cart.
+- Adjust quantities in the cart.
+- Proceed to checkout and place an order.
+
+Technologies Used
+
+Frontend: JavaScript, HTML, CSS
+
+Backend: Spring Boot (Java)
+Database: MySQL
 
 * UPDATES *
 - now dark mode saves settings once clicked in every page. before it would reset everytime user switched pages.
